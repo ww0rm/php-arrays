@@ -7,6 +7,9 @@ Implements Java8 StreamAPI in PHP7
 composer require ww0rm/php-arrays
 ```
 
+# Documentation
+[View](https://github.com/ww0rm/php-arrays/blob/master/docs/index.md)
+
 # Example
 ```php
 $array = [0, 1, 2, 3, 4, 5];
