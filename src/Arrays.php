@@ -1,16 +1,11 @@
 <?php
-/**
- * Created by ww0rm.
- * Date: 2/22/17
- */
 
-namespace ww0rm\arrays;
-
+namespace ww0rm\PHPArrays;
 
 /**
  * Class Arrays
  * implements Java8 StreamAPI features in PHP7
- * @package ww0rm\arrays
+ * @package ww0rm\PHPArrays
  */
 class Arrays
 {
@@ -84,7 +79,7 @@ class Arrays
      */
     public function skip(int $from) : Arrays
     {
-        $this->array = array_slice($this->array, $from, $this->count() - 1);
+        $this->array = array_slice($this->array, $from, $this->length() - 1);
         return $this;
     }
 
@@ -96,6 +91,16 @@ class Arrays
     public function limit(int $length) : Arrays
     {
         $this->array = array_slice($this->array, 0, $length);
+        return $this;
+    }
+
+    /**
+     * reverse array
+     * @return Arrays
+     */
+    public function reverse() : Arrays
+    {
+        $this->array = array_reverse($this->array);
         return $this;
     }
 
@@ -130,7 +135,7 @@ class Arrays
      * return array size
      * @return int
      */
-    public function count() : int
+    public function length() : int
     {
         return sizeof($this->array);
     }
