@@ -1,5 +1,6 @@
-# php-arrays
+# php-arrays [![Build Status](https://travis-ci.org/ww0rm/php-arrays.svg?branch=master)](https://travis-ci.org/ww0rm/php-arrays)
 Implements Java8 StreamAPI in PHP7
+##### Required PHP 7+
 
 # Install
 ```
