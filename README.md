@@ -3,6 +3,9 @@ Implements Java8 StreamAPI in PHP7
 
 # Example:
 $array = [0, 1, 2, 3, 4, 5];
+
 $result = Arrays::of($array)->filter(function ($i) {
+
     return $i % 2 == 0;
+    
 })->collect(); // [0, 2, 4]
