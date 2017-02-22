@@ -2,9 +2,8 @@ language: php
 php:
   - '7.0'
   - '7.1'
-  - hhvm
   - nightly
 
 script:
   - composer install
-  - vendor/bin/phpunit --verbose --coverage-text tests/
+  - vendor/bin/phpunit --verbose tests/
