@@ -6,4 +6,5 @@ php:
   - nightly
 
 script:
+  - composer install
   - vendor/bin/phpunit --verbose --coverage-text tests/
