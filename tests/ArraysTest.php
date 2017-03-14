@@ -56,5 +56,49 @@ class ArraysTest extends TestCase
         $array = [1, 2, 3, 4, 5];
         $this->assertEquals(5, Arrays::of($array)->length(), '', 0.0, 10, true);
     }
+
+    public function testSort()
+    {
+        $array = [1, 5, 10, 2, 3];
+        $this->assertEquals([1, 2, 3, 5, 10], Arrays::of($array)->sorted()->collect(), '', 0.0, 10, true);
+    }
+
+    public function testAnyMatch()
+    {
+        $array = [1, 2, 3, 4, 5];
+
+        $this->assertEquals(true, Arrays::of($array)->anyMatch(function ($i) {
+            return $i % 2 == 0;
+        }), '', 0.0, 10, true);
+
+        $this->assertEquals(false, Arrays::of($array)->anyMatch(function ($i) {
+            return $i == 7;
+        }), '', 0.0, 10, true);
+    }
+
+    public function testAllMatch()
+    {
+        $array = [2, 3, 4, 5, 6];
+
+        $this->assertEquals(true, Arrays::of($array)->allMatch(function ($i) {
+            return $i > 1;
+        }), '', 0.0, 10, true);
+
+        $this->assertEquals(false, Arrays::of($array)->anyMatch(function ($i) {
+            return $i == 1;
+        }), '', 0.0, 10, true);
+    }
+
+    public function testNoneMatch()
+    {
+        $array = [2, 3, 4, 5, 6];
+
+        $this->assertEquals(true, Arrays::of($array)->noneMatch(function ($i) {
+            return $i == 1;
+        }), '', 0.0, 10, true);
+
+        $this->assertEquals(false, Arrays::of($array)->noneMatch(function ($i) {
+            return $i > 1;
+        }), '', 0.0, 10, true);
+    }
 }
-?>

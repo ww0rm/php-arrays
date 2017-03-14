@@ -18,7 +18,7 @@ class Arrays
      * @param array $array
      * @return Arrays
      */
-    public static function of(array $array)
+    final public static function of(array $array)
     {
         return new Arrays($array);
     }
@@ -26,7 +26,7 @@ class Arrays
     /**
      * @return Arrays
      */
-    public static function new()
+    final public static function new()
     {
         return new Arrays();
     }
@@ -105,6 +105,16 @@ class Arrays
     }
 
     /**
+     * natural sort
+     * @return Arrays
+     */
+    public function sorted() : Arrays
+    {
+        asort($this->array);
+        return $this;
+    }
+
+    /**
      * return array after operations
      * @return array
      */
@@ -132,6 +142,38 @@ class Arrays
     }
 
     /**
+     * is any elements match condition
+     * @param callable $callable
+     * @return bool
+     */
+    public function anyMatch(callable $callable) : bool
+    {
+        $array = Arrays::of($this->collect())->filter($callable);
+        return $array->length() > 0;
+    }
+
+    /**
+     * is all elements match condition
+     * @param callable $callable
+     * @return bool
+     */
+    public function allMatch(callable $callable) : bool
+    {
+        $array = Arrays::of($this->collect())->filter($callable);
+        return $array->length() == $this->length();
+    }
+
+    /**
+     * is elements not match condition
+     * @param callable $callable
+     * @return bool
+     */
+    public function noneMatch(callable $callable) : bool
+    {
+        return !$this->anyMatch($callable);
+    }
+
+    /**
      * return array size
      * @return int
      */
@@ -148,5 +190,15 @@ class Arrays
     public function join(string $glue = '') : string
     {
         return implode($glue, $this->array);
+    }
+
+    /**
+     * walk array and apply callable to element
+     * @param callable $callable
+     * @return bool
+     */
+    public function forEach(callable $callable) : bool
+    {
+        return array_walk($this->array, $callable);
     }
 }
